@@ -20,7 +20,7 @@ optional arguments:
   --region REGION       AWS Region
 ```
 
-### example
+### Example
 
 ```
 $ pipenv run python access_log_search.py \
