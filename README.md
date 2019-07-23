@@ -32,10 +32,20 @@ $ pipenv run ./access_log_search.py \
 
 ## 仕様
 
-CLBログの以下項目に基づき検索を行う
+CLBログの各行ごとに、以下項目に基づいて検索を行う。
 
-- client (IP)
-- user_agent
 - requestのメソッド
 - requestのパス
 - requestのHTTPバージョン
+- client (IP)
+- user_agent
+
+例えば以下のCLBログを引数に与えた場合、CW Logsの検索クエリはその下のようになる。
+
+```
+2015-05-13T23:39:43.945958Z my-loadbalancer 192.168.131.39:2817 10.0.0.1:80 0.000073 0.001048 0.000057 200 200 0 29 "GET http://www.example.com:80/ HTTP/1.1" "curl/7.38.0" - -
+```
+
+```
+"GET" "/" "HTTP/1.1" "192.168.131.39" "curl/7.38.0"
+```
